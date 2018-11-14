@@ -25,23 +25,20 @@ public class SendServer {
     @Qualifier("mqScoreOutput")
     private MessageChannel messageChannel;
 
-    public void send1() {
-        Message<String> message = MessageBuilder.withPayload("send1").build();
-        sendChannel.scoreOutput().send(message);
-        System.out.println("发送消息send1");
+    public boolean sendMsg(String msg) {
+        Message<String> message = MessageBuilder.withPayload(msg).build();
+        return sendChannel.scoreOutput().send(message);
     }
 
-    public void send2() {
-        Message<String> message = MessageBuilder.withPayload("send2").build();
-        messageChannel.send(message);
-        System.out.println("发送消息send2");
+    public boolean sendMsg2(String msg) {
+        Message<String> message = MessageBuilder.withPayload(msg).build();
+        return messageChannel.send(message);
     }
 
-    public void send3(){
-        List<String> m = Lists.newArrayList("消息1","消息2","消息3","消息4");
+    public boolean sendList(String msg){
+        List<String> m = Lists.newArrayList(msg+1, msg+2, msg+3);
         Message<List<String>> message = MessageBuilder.withPayload(m).build();
-        sendChannel.scoreOutput().send(message);
-        System.out.println("发送消息send3");
+        return sendChannel.scoreOutput().send(message);
     }
 
 }
