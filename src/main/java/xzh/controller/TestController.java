@@ -1,11 +1,12 @@
 package xzh.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import xzh.sender.SendServer;
+
+import javax.annotation.Resource;
 
 /**
  * @author 向振华
@@ -15,7 +16,7 @@ import xzh.sender.SendServer;
 @RestController
 public class TestController {
 
-    @Autowired
+    @Resource
     private SendServer sendServer;
 
     @GetMapping("/sendMsg")

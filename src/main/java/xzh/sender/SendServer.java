@@ -1,13 +1,13 @@
 package xzh.sender;
 
 import com.google.common.collect.Lists;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -18,11 +18,11 @@ import java.util.List;
 @Service
 public class SendServer {
 
-    @Autowired
+    @Resource
     private SendChannel sendChannel;
 
-    @Autowired
-    @Qualifier("mqScoreOutput")
+    @Resource
+    @Qualifier(SendChannel.SCORE_OUTPUT)
     private MessageChannel messageChannel;
 
     public boolean sendMsg(String msg) {
